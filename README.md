@@ -34,4 +34,4 @@ Sugar tank (Chipotle soda cup)
 Water tank (Measuring cup)
 Wood to make overall structure and stir motor mount
 Cooking pot
-
+Short 1/4" NPT pipe and a 1/4" NPT bolt
