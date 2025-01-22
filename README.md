@@ -24,7 +24,7 @@ Breadboard
 USB-B to USB-A cable
 
 Additional things:
-3-D printed part sugar wheel for dispensing sugar
+3-D printed sugar wheel and platform for dispensing sugar
 Hot glue gun
 Sealing heat resistant epoxy
 Neodymium magnets and stir bar
