@@ -96,7 +96,6 @@ void heatTimerTask(){
   } else {
    heatTaskCompleted = true;
    heatTimerBegin = false;
-
 }}
 
 //Does the iterative math for heatTimerTask()
@@ -155,8 +154,7 @@ void heatTask(){
 //Prompts user on how many times they want the servo to rotate back and fourth, each rotation should be 0.25fl oz in theory.
 //Last rotation has the vibration motor go on for 30 seconds to clear the slide of the remaining sugar
 void servoTask() {
-  int servoMovements = getUserInput("Enter the number of rotations:");
-  
+  int servoMovements = getUserInput("Enter the number of rotations (0.25oz each):");
   if (servoMovements > -1) { //Must be a positive integer or else this skips
     Serial.print("Servo will move back and forth ");
     Serial.print(servoMovements);
@@ -231,8 +229,9 @@ void pumpTask() {
   distance_cm = 0.017 * duration_us;
   float measuredVolume2_mL = 11.69*48.8 - distance_cm*48.8;
   float measuredVolDifference_mL = measuredVolume_mL - measuredVolume2_mL;
-  float volumeDifference = ((measuredVolDifference_mL-CalcVolume_mL)/CalcVolume_mL)*100; //Should be an absolute value but I'm lazy
-  //I don't know why, but sprintf outputs the wrong variables so I have to do this the bad way, this information is mainly for trouble shooting anyway
+  float volumeDifference = ((measuredVolDifference_mL-CalcVolume_mL)/CalcVolume_mL)*100; //Should be an absolute value
+  //I don't know why, but sprintf outputs the wrong variables so I have to do this the bad way
+  //This information is mainly for trouble shooting anyway but I decided to leave it
   Serial.print("Volume error is: ");
   Serial.print(volumeDifference);
   Serial.print("%");
@@ -246,10 +245,9 @@ void pumpTask() {
   if (measuredVolDifference_mL < CalcVolume_mL*1.40 && measuredVolDifference_mL > CalcVolume_mL/1.40) {
     Serial.print(" - Error is tolerable.");
   }
-  else {Serial.print(" - Fuck it we ball. ");
+  else {Serial.print(" - Error is not within tolerance, continuing anyways.");
 }
   //Start next task
-  Serial.println("Pump task completed.");
   pumpTaskCompleted = true;
 }
 
